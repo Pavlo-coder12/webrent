@@ -76,11 +76,17 @@ public class AdversController {
             session.setAttribute("username", username);
             System.out.println("Point 5");
             // Перенаправлення на сторінку після успішної автентифікації
-            return "/authentication";
+            return "/code";
         } else {
             // Обробка некоректного логіна або пароля
             return "redirect:/login?error";
         }
+    }
+
+    @GetMapping("/authentication/code")
+    public String checkCode() {
+        // Ваш код тут
+        return "code";
     }
 
     // Метод для перевірки коректності логіна та пароля
