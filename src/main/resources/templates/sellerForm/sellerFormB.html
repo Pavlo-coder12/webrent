@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>House</title>
+    <meta name="author" content="Pavlo">
+    <link rel="stylesheet" type="text/css" th:href="@{./css/sellerFormB.css}">
+    <meta name="keywords" content="House, Оренда">
+    <link rel="shortcut icon" th:href="@{./img/house.png}">
+    <script th:src="@{./js/sellerFormB.js}" type="text/javascript"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="conteiner">
+            <a href="index.html" class="logo"><img th:src="@{./img/logo.jpg}" alt="logo" ></a>
+            <a href="#" class="nav">Створення анкети</a>
+            <a href="#" class="nav">Платні послуги</a>
+            <a href="#" class="nav">Адміністрація</a>
+            <a href="#" class="nav">Власні анкети</a>
+            <div class="dropdown">
+                <img th:src="@{./img/menu.png}" alt="menu" class = "menu">
+                <div class="dropdown-content">
+                    <a href="#">Налаштування</a>
+                    <a href="#">Вийти</a>
+                </div>
+            </div>
+       </div>	
+    </header>
+
+    <div class="main-content">
+        <div class="formBlock">
+            <h2 class="form-title">Повідомлення адміністраторам</h2>
+            <form action="/login" method="POST" class="form">
+                
+                <input type="text" id="topic" name="topic" placeholder="Тема" required><br><br>
+            
+                <textarea id="message" name="message" rows="5" cols="50" placeholder="Ваше повідомлення" required></textarea><br><br>
+            
+                <input type="submit" value="Відправити">
+            </form>
+          </div>
+    </div>
+
+    <footer class="footer">
+        <p style="font-size: 20pt;">Навчальний проект</p>
+        <div class="contact-info">
+            <p>Контакти:</p>
+            <ul>
+                <li>pavlo.kokhanevych@nure.ua</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
