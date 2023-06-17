@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>House</title>
+    <meta name="author" content="Pavlo">
+    <link rel="stylesheet" type="text/css" th:href="@{./css/registrationAdver.css}">
+    <meta name="keywords" content="House, Оренда">
+    <link rel="shortcut icon" th:href="@{./img/house.png}">
+    <script th:src="@{./js/registrationAdver.js}" type="text/javascript"></script>
+</head>
+<body>
+<header class="header">
+    <div class="conteiner">
+        <a href="index.html" class="logo"><img th:src="@{./img/logo.jpg}" alt="logo" ></a>
+        <a href="#" class="nav">Створення анкети</a>
+        <a href="#" class="nav">Платні послуги</a>
+        <a href="#" class="nav">Адміністрація</a>
+        <a href="#" class="nav">Власні анкети</a>
+        <div class="dropdown">
+            <img th:src="@{./img/menu.png}" alt="menu" class = "menu">
+            <div class="dropdown-content">
+                <a href="#">Налаштування</a>
+                <a href="#">Вийти</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="main-content">
+        <div class="formBlock">
+            <h2 class="form-title">Створення власної анкети</h2>
+            <form action="/login" method="POST" onsubmit="return validateForm()" class="form">
+                <p class="labelSex">Тип нерухомості:</p>
+                    <select id="typeHouse" name="typeHouse">
+                      <option value="apartment">квартира</option>
+                      <option value="house">часний будинок</option>
+                    </select>
+                <input type="number" id="area" name="area" placeholder="Площа(м2)" required><br><br>
+                <input type="number" id="rooms" name="rooms" placeholder="Кількість кімнат" required><br><br>
+                <input type="number" id="floor" name="floor" placeholder="Поверх(якщо квартира)"><br><br>
+                <p class="labelSex">Тип стін:</p>
+                    <select id="typeWall" name="typeWall">
+                      <option value="brick">цегла</option>
+                      <option value="frame">каркасний</option>
+                      <option value="silicateBrick">силікатна цегла</option>
+                      <option value="panel">панель</option>
+                      <option value="foamBlock">піноблок</option>
+                      <option value="monolith">моноліт</option>
+                    </select>
+                    
+                <p class="labelType">Тип користувача:</p>
+                <select id="typeUser" name="typeUser">
+                    <option value="seller">Орендодавець/Продавець</option>
+                    <option value="client">Орендатор/Покупець</option>
+                </select><br><br>
+
+                <p class="labelType">Ціль:</p>
+                <select id="goal" name="goal">
+                    <option value="rent">оренда</option>
+                    <option value="sell">продаж</option>
+                </select><br><br>
+                <p>Адреса</p>
+                <input type="text" id="region" name="region" placeholder="Область" required>
+                <input type="text" id="area_place" name="area_place" placeholder="Район" required>
+                <input type="text" id="city" name="city" placeholder="Місто або населений пункт" required>
+                <input type="text" id="street" name="street" placeholder="Вулиця" required>
+                <input type="text" id="numberHouse" name="numberHouse" placeholder="Номер будинку" required>
+                <input type="text" id="numberApartment" name="numberApartment" placeholder="Номер квартири" >
+                <textarea id="message" name="message" rows="5" cols="50" placeholder="Власний опис нерухомості"></textarea><br><br>
+                <p> Фото нерухомості:</p>
+                <input type="file" id="image" name="image" accept="image/*" multiple required>
+                <br><br><br><br>
+
+                <input type="number" id="priceHouse" name="priceHouse" placeholder="Ціна (якщо оренда, то за місяць в грн.)" onchange="updatePrice()" required>
+                <p>Загальна ціна враховуючи 10% комісійних:</p>
+                <input type="text" id="generalPrice" name="generalPrice"  readonly required>
+                <input type="submit" value="Відправити">
+            </form>
+          </div>
+    </div>
+
+    <footer class="footer">
+        <p style="font-size: 20pt;">Навчальний проект</p>
+        <div class="contact-info">
+            <p>Контакти:</p>
+            <ul>
+                <li>pavlo.kokhanevych@nure.ua</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
