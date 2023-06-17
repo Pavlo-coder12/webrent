@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>House</title>
+    <meta name="author" content="Pavlo">
+    <link rel="stylesheet" type="text/css" th:href="@{./css/listAdversS.css}">
+    <meta name="keywords" content="House, Оренда">
+    <link rel="shortcut icon" th:href="@{./img/house.png}">
+    <script th:src="@{./js/listAdvers.js}" type="text/javascript"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="conteiner">
+            <a href="index.html" class="logo"><img th:src="@{./img/logo.jpg}" alt="logo" ></a>
+            <a href="#" class="nav">Адміністрація</a>
+            <a href="#" class="nav">Кошик</a>
+            <div class="dropdown">
+                <img src="img/menu.png" alt="menu" class = "menu">
+                <div class="dropdown-content">
+                    <a href="#">Налаштування</a>
+                    <a href="#">Вийти</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+<div class="main-content">
+    <div class="formBlock">
+        <form action="/login" method="GET" onsubmit="return validateForm()" class="form">
+            <p class="labelType">Мета:</p>
+            <input type="checkbox" name="buy" value="buy"><span class = "checkbox-label">купівля</span><Br><br>
+            <input type="checkbox" name="rent" value="rent"><span class = "checkbox-label">оренда</span><Br>
+
+            <p class="labelType">Тип нерухомості:</p>
+            <input type="checkbox" name="apartment" value="apartment"><span class = "checkbox-label">квартира</span><Br><br>
+            <input type="checkbox" name="house" value="house"><span class = "checkbox-label">часний будинок</span><Br>
+
+            <p class="labelType">Кількість кімнат:</p>
+            <select id="typeRoom" name="typeRoom">
+                <option value="nothingRoom">Нічого</option>
+                <option value="rooms1">1</option>
+                <option value="rooms2">2</option>
+                <option value="rooms3">3</option>
+                <option value="rooms4">4+</option>
+            </select><br><br>
+
+            <p class="labelType">Площа:</p>
+            <input type="number" name="beginArea" value="beginArea" placeholder="Від">
+            <input type="number" name="endArea" value="endArea" placeholder="До"><Br>
+
+            <p class="labelType">Поверх:</p>
+            <input type="number" name="beginFloor" value="beginFloor" placeholder="Від">
+            <input type="number" name="endFloor" value="endFloor" placeholder="До"><Br>
+
+            <p class="labelType">Ціна:</p>
+            <input type="number" name="beginPrice" value="beginPrice" placeholder="Від">
+            <input type="number" name="endPrice" value="endPrice" placeholder="До"><Br>
+
+            <input type="text" id="city" name="city" placeholder="Місто або населений пункт">
+            <input type="text" id="street" name="street" placeholder="Вулиця">
+
+            <p class="labelType">Сортування:</p>
+            <select id="typeSort" name="typeSort">
+                <option value="nothingSort">Нічого</option>
+                <option value="cheap">Від дешевих до дорогих</option>
+                <option value="rich">Від дорогих до дешевих</option>
+            </select><br><br>
+
+            <input type="button" value="Скинути фільтри" onclick="clearInputs()">
+            <input type="submit" value="Пошук">
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+    <p style="font-size: 20pt;">Навчальний проект</p>
+    <div class="contact-info">
+        <p>Контакти:</p>
+        <ul>
+            <li>pavlo.kokhanevych@nure.ua</li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>

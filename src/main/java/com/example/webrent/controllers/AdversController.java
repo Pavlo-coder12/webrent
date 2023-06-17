@@ -76,7 +76,7 @@ public class AdversController {
             session.setAttribute("username", username);
             System.out.println("Point 5");
             // Перенаправлення на сторінку після успішної автентифікації
-            return "/sellerForm/listAdversS";
+            return "/customerForm/listAdversC";
         } else {
             // Обробка некоректного логіна або пароля
             return "redirect:/login?error";
