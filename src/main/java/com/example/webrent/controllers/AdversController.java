@@ -1,11 +1,9 @@
 package com.example.webrent.controllers;
 
 import com.example.webrent.repositories.UserConnection;
-import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -70,25 +68,6 @@ public class AdversController {
         return "customerForm/customerFormB";
     }
 
-
-
-//    @GetMapping("/user")
-//    public String goToUser(@RequestParam("name") String name,
-//                           @RequestParam("surname") String surname,
-//                           Model model) {
-////        String fullName = name + surname;
-//        model.addAttribute("name", name);
-//        model.addAttribute("surname", surname);
-//        return "user";
-//    }
-
-//    @PostMapping("/user")
-//    public String goToUser(@RequestBody User human) {
-////        String fullName = name + surname;
-//        System.out.println(human.getName() + " " + human.getSurname() + "fd");
-//        return "/user";
-//    }
-
     @GetMapping("/aut")
     public String yourMethod() {
         // Ваш код тут
@@ -108,23 +87,16 @@ public class AdversController {
     @GetMapping("/authentication/listAdvers")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) throws SQLException {
         // Перевірка коректності логіна та пароля
-        System.out.println("FUckkckc");
         if (isValidLogin(username, password)) {
-            System.out.println("YEEEEEEESSSSS");
             // Створення автентифікаційного об'єкта
             Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
-            System.out.println("Point 1");
             // Виклик AuthenticationManager для автентифікації
             Authentication authenticated = authenticationManager.authenticate(authentication);
-            System.out.println("Point 2");
             // Встановлення автентифікованого користувача в SecurityContext
             SecurityContextHolder.getContext().setAuthentication(authenticated);
-            System.out.println("Point 3");
             // Створення сесії для користувача
             HttpSession session = request.getSession(true);
-            System.out.println("Point 4");
             session.setAttribute("username", username);
-            System.out.println("Point 5");
             String typeUser = UserConnection.getUserType((String) session.getAttribute("username"));
             // Перенаправлення на сторінку після успішної автентифікації
             if (typeUser.equals("seller")) {

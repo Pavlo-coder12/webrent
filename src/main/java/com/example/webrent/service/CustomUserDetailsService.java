@@ -27,7 +27,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         // Генерація рандомних значень для прикладу
-//        String randomUsername = "user123@gmail.com";
         String randomPassword = null;
         System.out.println("User");
         try {
@@ -42,9 +41,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         // Закодувати введений пароль
         String encodedPassword = passwordEncoder.encode(randomPassword);
 
-//        if (!randomUsername.equals(username)) {
-//            throw new UsernameNotFoundException("Користувача з таким логіном не знайдено");
-//        }
 
         // Повернення UserDetails об'єкту з рандомними даними про користувача
         return new org.springframework.security.core.userdetails.User(
