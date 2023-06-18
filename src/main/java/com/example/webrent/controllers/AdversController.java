@@ -19,7 +19,7 @@ public class AdversController {
 
     @GetMapping("/")
     public String aut() {
-        return "main";
+        return "listAdvers";
     }
 
 //    @GetMapping("/user")
@@ -42,7 +42,7 @@ public class AdversController {
     @GetMapping("/aut")
     public String yourMethod() {
         // Ваш код тут
-        return "aut";
+        return "authentication";
     }
 
     @GetMapping("/main")
@@ -55,7 +55,7 @@ public class AdversController {
     private AuthenticationManager authenticationManager;
 
 
-    @GetMapping("/login")
+    @GetMapping("/authentication/listAdvers")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
         // Перевірка коректності логіна та пароля
         System.out.println("FUckkckc");
@@ -76,7 +76,7 @@ public class AdversController {
             session.setAttribute("username", username);
             System.out.println("Point 5");
             // Перенаправлення на сторінку після успішної автентифікації
-            return "/customerForm/listAdversC";
+            return "sellerForm/listAdversS";
         } else {
             // Обробка некоректного логіна або пароля
             return "redirect:/login?error";

@@ -24,7 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // Генерація рандомних значень для прикладу
-        String randomUsername = "user123";
+        String randomUsername = "user123@gmail.com";
         String randomPassword = "pass123";
         long randomUserId = 1;
 

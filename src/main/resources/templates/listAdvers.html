@@ -14,13 +14,13 @@
         <div class="conteiner">
             <a href="index.html" class="logo"><img th:src="@{./img/logo.jpg}" alt="logo" ></a>
 
-            <a href="#" class="nav">Увійти</a>
+            <a th:href="@{/aut}" class="nav">Увійти</a>
         </div>
     </header>
 
     <div class="main-content">
         <div class="formBlock">
-            <form action="/login" method="GET" onsubmit="return validateForm()" class="form">
+            <form action="#" method="GET" onsubmit="return validateForm()" class="form">
                 <p class="labelType">Мета:</p>
                 <input type="checkbox" name="buy" value="buy"><span class = "checkbox-label">купівля</span><Br><br>
                 <input type="checkbox" name="rent" value="rent"><span class = "checkbox-label">оренда</span><Br>
