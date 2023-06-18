@@ -25,6 +25,53 @@ public class AdversController {
         return "listAdvers";
     }
 
+    @GetMapping("/registration")
+    public String registration() {
+        return "registration";
+    }
+
+    @GetMapping("/password")
+    public String deletePassword() {
+        return "password";
+    }
+
+    @GetMapping("/code")
+    public String code() {
+        return "code";
+    }
+
+    @GetMapping("/sellerForm/listAdversS")
+    public String sellerAdvers() {
+        return "sellerForm/listAdversS";
+    }
+
+    @GetMapping("/sellerForm/registrationAdver")
+    public String sellerReg() {
+        return "/sellerForm/registrationAdver";
+    }
+
+    @GetMapping("/sellerForm/subscriptionForm")
+    public String sellerSub() {
+        return "sellerForm/subscriptionForm";
+    }
+
+    @GetMapping("/sellerForm/sellerFormB")
+    public String sellerB() {
+        return "sellerForm/sellerFormB";
+    }
+
+    @GetMapping("/customerForm/listAdversC")
+    public String customerAdvers() {
+        return "customerForm/listAdversC";
+    }
+
+    @GetMapping("/customerForm/customerFormB")
+    public String customerFormB() {
+        return "customerForm/customerFormB";
+    }
+
+
+
 //    @GetMapping("/user")
 //    public String goToUser(@RequestParam("name") String name,
 //                           @RequestParam("surname") String surname,

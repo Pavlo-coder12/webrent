@@ -39,13 +39,6 @@ public class SecurityConfiguration {
                         .anyRequest().permitAll()
                 )
                 .formLogin(withDefaults())
-                //.loginPage("/login")
-                //.defaultSuccessUrl("/main", true)
-                //.and()
-                //.logout()
-                //.logoutSuccessUrl("/login")
-                //.and()
-//                .csrf().disable()
                 .addFilterBefore(customFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }

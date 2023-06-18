@@ -12,7 +12,7 @@ function validateForm() {
     } else if (name.length > 30 || surname.length > 30 || fatherName.length > 30) {
         alert(" Поля: Ім'я, прізвище, по-батькові не більше 30 символів");
         return false;
-    } else if (cardCvv != 3) {
+    } else if (cardCvv.length != 3) {
         alert("CVV має бути 3 символа");
         return false;
     }
