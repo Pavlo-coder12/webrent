@@ -1,5 +1,6 @@
 package com.example.webrent.controllers;
 
+import com.example.webrent.repositories.UserConnection;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+
+import java.sql.SQLException;
 
 @Controller
 @RequestMapping("/")
@@ -56,7 +59,7 @@ public class AdversController {
 
 
     @GetMapping("/authentication/listAdvers")
-    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) throws SQLException {
         // Перевірка коректності логіна та пароля
         System.out.println("FUckkckc");
         if (isValidLogin(username, password)) {
@@ -75,8 +78,16 @@ public class AdversController {
             System.out.println("Point 4");
             session.setAttribute("username", username);
             System.out.println("Point 5");
+            String typeUser = UserConnection.getUserType((String) session.getAttribute("username"));
             // Перенаправлення на сторінку після успішної автентифікації
-            return "sellerForm/listAdversS";
+            if (typeUser.equals("seller")) {
+                return "sellerForm/listAdversS";
+            } else if (typeUser.equals("customer")) {
+                return "customerForm/listAdversC";
+            } else  {
+                return "authentication";
+            }
+
         } else {
             // Обробка некоректного логіна або пароля
             return "redirect:/login?error";

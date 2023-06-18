@@ -1,6 +1,7 @@
 package com.example.webrent.service;
 
 
+import com.example.webrent.repositories.UserConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.Collections;
 
 @Service
@@ -23,21 +25,30 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         // Генерація рандомних значень для прикладу
-        String randomUsername = "user123@gmail.com";
-        String randomPassword = "pass123";
+//        String randomUsername = "user123@gmail.com";
+        String randomPassword = null;
+        System.out.println("User");
+        try {
+            randomPassword = UserConnection.getUserPassword(username);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("User");
+
         long randomUserId = 1;
 
         // Закодувати введений пароль
         String encodedPassword = passwordEncoder.encode(randomPassword);
 
-        if (!randomUsername.equals(username)) {
-            throw new UsernameNotFoundException("Користувача з таким логіном не знайдено");
-        }
+//        if (!randomUsername.equals(username)) {
+//            throw new UsernameNotFoundException("Користувача з таким логіном не знайдено");
+//        }
 
         // Повернення UserDetails об'єкту з рандомними даними про користувача
         return new org.springframework.security.core.userdetails.User(
-                randomUsername,
+                username,
                 encodedPassword,
                 Collections.emptyList()
         );
